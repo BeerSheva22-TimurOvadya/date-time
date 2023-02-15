@@ -57,24 +57,24 @@ class DateTimeTests {
 		
 	@Test
 	void nextFriday13test() {
-		TemporalAdjuster nextFriday13 = new NextFriday13();
-		assertEquals(LocalDate.of(2023, 10, 13), LocalDate.of(2023, 2, 14).with(nextFriday13));				
-		assertEquals(LocalDate.of(2024, 9, 13), LocalDate.of(2024, 2, 29).with(nextFriday13));
-		assertEquals(LocalDate.of(2024, 12, 13), LocalDate.of(2024, 9, 13).with(nextFriday13));
+		TemporalAdjuster NextShabat13 = new NextFriday13();
+		assertEquals(LocalDate.of(2023, 10, 13), LocalDate.of(2023, 2, 14).with(NextShabat13));				
+		assertEquals(LocalDate.of(2024, 9, 13), LocalDate.of(2024, 2, 29).with(NextShabat13));
+		assertEquals(LocalDate.of(2024, 12, 13), LocalDate.of(2024, 9, 13).with(NextShabat13));
 	}
 	
 	@Test
 	void workingDayTest() {
-		TemporalAdjuster add4WorkingDaysSatSun = new WorkingDays(7, new DayOfWeek[] { DayOfWeek.FRIDAY, DayOfWeek.SUNDAY });				
-		assertEquals(LocalDate.of(2023, 02, 24), LocalDate.of(2023, 02, 15).with(add4WorkingDaysSatSun));
-		assertEquals(LocalDate.of(2023, 02, 28), LocalDate.of(2023, 02, 18).with(add4WorkingDaysSatSun));
+		TemporalAdjuster daysOff = new WorkingDays(7, new DayOfWeek[] { DayOfWeek.FRIDAY, DayOfWeek.SUNDAY });				
+		assertEquals(LocalDate.of(2023, 02, 24), LocalDate.of(2023, 02, 15).with(daysOff));
+		assertEquals(LocalDate.of(2023, 02, 28), LocalDate.of(2023, 02, 18).with(daysOff));
 		
-		TemporalAdjuster add2WorkingDaysFriSun = new WorkingDays(10, new DayOfWeek[] {
+		TemporalAdjuster daysOff1 = new WorkingDays(10, new DayOfWeek[] {
 				DayOfWeek.SUNDAY, 
 				DayOfWeek.MONDAY,
 				DayOfWeek.TUESDAY,
 				DayOfWeek.WEDNESDAY,
 				DayOfWeek.THURSDAY});			
-		assertEquals(LocalDate.parse("2023-03-25"), LocalDate.parse("2023-02-18").with(add2WorkingDaysFriSun));		
+		assertEquals(LocalDate.parse("2023-03-25"), LocalDate.parse("2023-02-18").with(daysOff1));		
 	}
 }
