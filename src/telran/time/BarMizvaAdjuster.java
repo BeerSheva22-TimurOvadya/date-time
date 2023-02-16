@@ -5,7 +5,7 @@ import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAdjuster;
 
 
-public class BarMizvaAjuster implements TemporalAdjuster {
+public class BarMizvaAdjuster implements TemporalAdjuster {
 	
 
 	@Override
