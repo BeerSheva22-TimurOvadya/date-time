@@ -57,15 +57,15 @@ class DateTimeTests {
 		
 	@Test
 	void nextFriday13test() {
-		TemporalAdjuster NextShabat13 = new NextFriday13();
-		assertEquals(LocalDate.of(2023, 10, 13), LocalDate.of(2023, 2, 14).with(NextShabat13));				
-		assertEquals(LocalDate.of(2024, 9, 13), LocalDate.of(2024, 2, 29).with(NextShabat13));
-		assertEquals(LocalDate.of(2024, 12, 13), LocalDate.of(2024, 9, 13).with(NextShabat13));
+		TemporalAdjuster NextShishi13 = new NextFriday13();
+		assertEquals(LocalDate.of(2023, 10, 13), LocalDate.of(2023, 2, 14).with(NextShishi13));				
+		assertEquals(LocalDate.of(2024, 9, 13), LocalDate.of(2024, 2, 29).with(NextShishi13));
+		assertEquals(LocalDate.of(2024, 12, 13), LocalDate.of(2024, 9, 13).with(NextShishi13));
 	}
 	
 	@Test
 	void workingDayTest() {
-		TemporalAdjuster daysOff = new WorkingDays(7, new DayOfWeek[] { DayOfWeek.FRIDAY, DayOfWeek.SUNDAY });				
+		TemporalAdjuster daysOff = new WorkingDays(7, new DayOfWeek[] { DayOfWeek.FRIDAY, DayOfWeek.SATURDAY });				
 		assertEquals(LocalDate.of(2023, 02, 24), LocalDate.of(2023, 02, 15).with(daysOff));
 		assertEquals(LocalDate.of(2023, 02, 28), LocalDate.of(2023, 02, 18).with(daysOff));
 		
